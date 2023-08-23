@@ -88,4 +88,9 @@
       }
     }
   }
+  @media (max-width: $breakpoint) {
+    & {
+      min-height: 50svh;
+    }
+  }
 }
