@@ -1,0 +1,100 @@
+@import "global";
+
+.todoForm {
+  display: grid;
+  justify-items: center;
+  gap: 1lh;
+  padding-bottom: 1rem;
+  * {
+    display: block;
+  }
+  label {
+    text-align: center;
+    font-size: 1.25rem;
+    filter: drop-shadow(0 0 1px $text);
+  }
+  &__inputField {
+    position: relative;
+    width: 50%;
+    height: 30px;
+    & * {
+      height: 100%;
+    }
+    input {
+      border: none;
+      font-family: "Roboto", sans-serif;
+      //background-color: transparent;
+      background-color: $black;
+      color: $text;
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+      transition: 0.3s;
+      & + span {
+        position: absolute;
+        top: 0;
+        left: 0px;
+        padding: 5px;
+        animation: infinite ease-in-out 2s blink;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0px 0px 6px $black;
+        & + span {
+          display: none;
+        }
+      }
+      &:not(:placeholder-shown) + span {
+        display: none;
+      }
+      &:not(:-moz-placeholder) + span {
+        display: none;
+      }
+      &:not(:-ms-input-placeholder) + span {
+        display: none;
+      }
+    }
+  }
+  &__btn {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: $text;
+    background-color: $black;
+    padding: 10px 20px;
+    border: 1px solid #13171e;
+    box-shadow: black 0px 0px 0px 0px;
+    border-radius: 5px;
+    transition: 0.3s;
+    width: 50%;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.137));
+    @media (hover: hover) {
+      &:hover {
+        transition: 0.3s;
+        background-color: $text;
+        color: $black;
+        border: 1px solid $text;
+      }
+    }
+    &:active {
+      filter: none;
+      transition: transform 0.2s, filter 0.5s;
+      transform: translateY(4px);
+      background-color: $text;
+      color: $black;
+      border: 1px solid $text;
+    }
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

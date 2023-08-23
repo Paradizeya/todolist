@@ -1,0 +1,91 @@
+.list {
+  display: grid;
+  gap: 1rem;
+  li {
+    &:not(:last-child) {
+      border-bottom: 2px solid mix($black, transparent, 20%);
+      padding-bottom: 10px;
+    }
+    label {
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: min-content 1fr min-content;
+      align-items: center;
+      input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: $text;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        position: relative;
+        transition: 0.3s;
+        &::after {
+          content: "\2714";
+          font-size: 16px;
+          position: absolute;
+          top: 0px;
+          left: 4px;
+          color: $text;
+          transition: scale 0.5s ease-in-out;
+        }
+        &:active:after {
+          transition: scale 0.1s ease-in-out;
+          scale: 1.5;
+        }
+        @media (hover: hover) {
+          &:hover {
+            background-color: lighten($color: $black, $amount: 15%);
+            filter: drop-shadow(0 0 2px $black);
+          }
+        }
+
+        &:checked {
+          background-color: $black;
+        }
+      }
+    }
+    span {
+      text-align: justify;
+      @media (min-width: $breakpoint) {
+        max-width: 50vw;
+      }
+    }
+    &:has(input:checked) {
+      span {
+        text-decoration: line-through;
+        color: mix($text, transparent, 50%);
+      }
+    }
+  }
+  .controls {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    button {
+      width: 2.75rem;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      stroke: $black;
+      fill: none;
+      stroke-width: 1.5;
+      transition: 0.4s;
+
+      @media (hover: hover) {
+        &:hover {
+          stroke: $text;
+          filter: drop-shadow(0 0 1px $text);
+          transform: translateY(-4px);
+        }
+      }
+    }
+    @media (max-width: $breakpoint) {
+      grid-template-columns: 1fr;
+      button {
+        width: 2.5rem;
+        word-wrap: normal;
+      }
+    }
+  }
+}

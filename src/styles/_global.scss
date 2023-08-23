@@ -1,0 +1,10 @@
+$black: #191613;
+$light: #8f7866;
+$text: #e9e6e2;
+$breakpoint: 587px;
+
+@mixin grid-center($min-height: 100vh) {
+  display: grid;
+  place-items: center;
+  min-height: $min-height;
+}
